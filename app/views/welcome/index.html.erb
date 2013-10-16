@@ -1,3 +1,17 @@
 <h1> Hellow world!</h1>
-<a href="#" class="large button">Sign Up</a>
+<a href="/auth/register/new_user" class="large button">Sign Up</a>
 <a href="#" class="large button success">Log In</a>
+
+
+
+<%if current_user.nil?%>
+<p>Hello <%=current_user.email %></p>
+<%end%>
+
+
+<%= form_for @filerack, :url => "/user/createfile", :html => { :multipart => true } do |form| %>
+
+
+  <%= form.file_field :datafile %>
+  <%= submit_tag("Upload!!!")%>
+<% end %>
