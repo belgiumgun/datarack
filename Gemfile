@@ -4,10 +4,20 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+gem 'sqlite3'
+
+
+#For authentication
+gem 'devise'
+
+#For Uploading files
+gem "paperclip", "~> 3.0"
+
+#foundation files
+gem 'zurb-foundation', '~> 4.0.0'
 
 #pg gem for heroku
-gem 'pg'
+#gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
