@@ -1,0 +1,24 @@
+<nav class="top-bar">
+  <ul class="title-area">
+        <li class="name">  <h1 style="color:white;margin-left:20%">DataRack</h1></li>
+   </ul>
+  <ul class="right">
+    <li class="name"><h1 style="color:white">Sign Up</h1></li>
+  </ul>
+</nav>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>

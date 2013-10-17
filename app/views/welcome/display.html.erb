@@ -1,6 +1,7 @@
 <h1> Data Display Page </h1>
 
-
+<%if !@allfiles.nil?%>
 <%@allfiles.each do |singlefile|%>
 <a href="<%=singlefile.datafile.url%>" class="small button success"></a>
+<%end%>
 <%end%>

@@ -1,23 +1,22 @@
 Datarack::Application.routes.draw do
   #devise_for :users
-  get "welcome/index"
+#  get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
-
-
-
-
+       root 'welcome#index'
+  
 
   match '/user/createfile' => 'welcome#insertfile', via: :all  
 
 
   #Routing for DEVISE - USERS
+  devise_for :users
+ # devise_for :users,:path =>"auth", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'new_user' }
   
-  devise_for :users, :path =>"auth", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'new_user' }
-  
+ 
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
