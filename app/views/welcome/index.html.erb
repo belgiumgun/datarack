@@ -1,10 +1,30 @@
-<h1> Hellow world!</h1>
-<a href="/auth/register/new_user" class="large button">Sign Up</a>
-<a href="#" class="large button success">Log In</a>
+
+<nav class="top-bar">
+  <ul class="title-area">
+    <li class="name">
+    <h1 style="color:white;margin-left:20%">DataRack</h1>
+    </li>
+    
+    
+    
+    
+  </ul>
+</nav>
+
+<div class="row">
+<a href="/auth/register/new_user" class="large button expand">Sign Up</a>
+</div>
+<div class="row">
+<a href="/auth/login" class="large button expand">Log in</a>
+</div>
 
 
 
-<%if current_user.nil?%>
+<div class="row" id="signinform">
+
+</div>
+
+<%if !current_user.nil?%>
 <p>Hello <%=current_user.email %></p>
 <%end%>
 
@@ -12,6 +32,6 @@
 <%= form_for @filerack, :url => "/user/createfile", :html => { :multipart => true } do |form| %>
 
 
-  <%= form.file_field :datafile %>
-  <%= submit_tag("Upload!!!")%>
+<%= form.file_field :datafile %>
+<%= submit_tag("Upload!!!")%>
 <% end %>
