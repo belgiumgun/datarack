@@ -8,6 +8,8 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
+  #Jai Heroku mata
+  config.secret_key = '5c20366191c429818f00f16bc4cfea5c73790ce18fb63d0d93c91f4c16f3956fadca4f61e2702c631320b691776fcbe207e9762ddcde6a878c5d2291daefef68'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
