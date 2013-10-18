@@ -26,6 +26,16 @@ class WelcomeController < ApplicationController
     render "welcome/home"
       
  end
+    
+    def deletefile
+    p params
+      @filerack= Filerack.new
+      
+     render nothing: true      
+      
+    end
+    
+    
   
   def home
   end

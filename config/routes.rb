@@ -10,6 +10,7 @@ Datarack::Application.routes.draw do
   
 
   match '/user/createfile' => 'welcome#insertfile', via: :all  
+  match '/file/delete' => 'welcome#deletefile', via: :delete  
 
 
   #Routing for DEVISE - USERS

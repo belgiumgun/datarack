@@ -2,41 +2,53 @@
   <ul class="title-area">
         <li class="name">  <h1 style="color:white;margin-left:20%">DataRack</h1></li>
    </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-form"><%= form_tag("/users/sign_out",:method => :delete) do%>
+                        <input  type="submit" class="button alert" value="Logout">
+        <%end%>
+        </li>
+        <li class="divider"></li>
+      <li class><a href="#">About us</a></li>
+    </ul>
+  </section>
+</nav>
 
-  </nav>
 
-      <div class="row" style="margin-right:20%"><%= form_tag("/users/sign_out",:method => :delete) do%>
-                        <input name="_method" type="hidden" value="delete">
-                        <input class="tiny button alert" type="submit" value="logout">
-        <%end%></div>
 <div class="row">
-  <div class="panel callout radius">
-<%= form_for @filerack, :url => "/user/createfile", :html => { :multipart => true } do |form| %>
-<%= form.file_field :datafile %>
-<%= submit_tag("Upload!!!")%>
-<% end %>
-  </div>
+        <div class="large-3 columns">
+          <div class="panel">
+              <%= form_for @filerack, :url => "/user/createfile", :html => { :multipart => true } do |form| %>
+                <%= form.file_field :datafile, multiple: true %>
+                <%= submit_tag("Upload!!!")%>
+            <% end %>
+          </div>
+      </div>
 </div>
-
-<div class="row" id="fileTable">
-  <%if @allfiles.nil?%>
-  <div class="panel callout radius">
-              <h5>No files to display!.</h5>
+ <%if @allfiles.nil?%>
+     <div class="row" >
+       <div class="panel callout radius">
+             <h5>No files to display!.</h5>
               <p>Please upload some files or no one in the group uploaded any files, So nothing to display here!.</p>
             </div>
-  <%else%>
-  <%@allfiles.each do |file|%>
-
-    <div class="row" style="backgroundcolor=gray">
-      <div class="large-5 columns"><span class="label"><%=file.datafile_file_name%></span></div>
-      <div class="large-3 columns"><span class="label"><%=file.datafile_content_type%></span></div>
-      <div class="large-2 columns"><span class="label"><%=file.datafile_file_size%></span></div>
-      <div class="large-2 columns">
-        
-        <a href="<%=file.datafile.url%>" class="tiny button success">download</a></div>
-    </div>
-
-  <%end%>
+     </div>
+ <%else%>
+        <div class="row">  
+          <div class="panel">
+              <%@allfiles.each do |file|%>
+                  <div class="row" >
+                        <div class="large-4 columns"><span class="label"><%=file.datafile_file_name%></span></div>
+                        <div class="large-2 columns"><span class="label"><%=file.datafile_content_type%></span></div>
+                        <div class="large-2 columns"><span class="label"><%=file.datafile_file_size%></span></div>
+                        <div class="large-2 columns"><a href="<%=file.datafile.url%>" class="tiny button success">download</a></div>
+                        <div class="large-2 columns"><%= form_tag("/file/delete",:method => :delete) do%>
+                            <input type ="hidden" value='<%file.id%>'>
+                            <input  type="submit" class="button alert" value="delete"><%end%></div>
+                  </div>
+            <%end%>
+          </div>
+      </div>
   
-  <%end%>
-</div>
+<%end%>
+
