@@ -17,38 +17,29 @@
 
 
 <div class="row">
-        <div class="large-3 columns">
-          <div class="panel">
-              <%= form_for @filerack, :url => "/user/createfile", :html => { :multipart => true } do |form| %>
-                <%= form.file_field :datafile, multiple: true %>
+       <div class="large-3 columns">
+            <%= form_for @filerack,:url => "/user/createfile", :html => { :multipart => true } do |form| %>
+                <%= form.file_field :datafile%>
                 <%= submit_tag("Upload!!!")%>
             <% end %>
-          </div>
-      </div>
-</div>
+        </div>
+  <div class="large-9  large-offset-1 clolumns">   
  <%if @allfiles.nil?%>
-     <div class="row" >
        <div class="panel callout radius">
              <h5>No files to display!.</h5>
               <p>Please upload some files or no one in the group uploaded any files, So nothing to display here!.</p>
             </div>
-     </div>
  <%else%>
-        <div class="row">  
-          <div class="panel">
-              <%@allfiles.each do |file|%>
+      
+   <%@allfiles.each do |file|%>
+                  
                   <div class="row" >
-                        <div class="large-4 columns"><span class="label"><%=file.datafile_file_name%></span></div>
-                        <div class="large-2 columns"><span class="label"><%=file.datafile_content_type%></span></div>
-                        <div class="large-2 columns"><span class="label"><%=file.datafile_file_size%></span></div>
-                        <div class="large-2 columns"><a href="<%=file.datafile.url%>" class="tiny button success">download</a></div>
-                        <div class="large-2 columns"><%= form_tag("/file/delete",:method => :delete) do%>
-                            <input type ="hidden" value='<%file.id%>'>
-                            <input  type="submit" class="button alert" value="delete"><%end%></div>
+                       <span class="label">
+                         <%= file.datafile%>
+                         </span>
                   </div>
             <%end%>
-          </div>
-      </div>
-  
+         
 <%end%>
-
+ </div>
+  
