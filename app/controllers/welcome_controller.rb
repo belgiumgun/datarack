@@ -1,7 +1,12 @@
 class WelcomeController < ApplicationController
   def index
       @filerack = Filerack.new
-      
+    @allfiles=Filerack.all
+    if (current_user)
+      render 'welcome/home'
+    else
+      render 'welcome/index'
+    end
     
   end
   
