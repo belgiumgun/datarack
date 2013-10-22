@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
+# tEst comment for  Braching git
 
 
 #For authentication
@@ -14,7 +15,7 @@ gem 'devise'
 gem "paperclip", "~> 3.0"
 
 #foundation files
-gem 'zurb-foundation', '~> 4.0.0'
+#gem 'zurb-foundation', '~> 4.0.0'
 
 #pg gem for heroku
 gem 'pg'
