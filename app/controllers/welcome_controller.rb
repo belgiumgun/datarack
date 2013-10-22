@@ -31,13 +31,19 @@ class WelcomeController < ApplicationController
  end
     
     def deletefile
-    p params
+
+
+
       @filerack= Filerack.new
-      
+
+      Filerack.where(:id=>params["id"].to_i).first.delete
      render nothing: true      
       
     end
     
+    def downloadfile file_path
+    send_file(file_path, :disposition => "attachment")
+    end
     
   
   def home

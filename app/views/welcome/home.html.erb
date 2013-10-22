@@ -1,45 +1,52 @@
-<nav class="top-bar">
-  <ul class="title-area">
-        <li class="name">  <h1 style="color:white;margin-left:20%">DataRack</h1></li>
-   </ul>
-  <section class="top-bar-section">
-    <ul class="right">
-      <li class="divider"></li>
-      <li class="has-form"><%= form_tag("/users/sign_out",:method => :delete) do%>
-                        <input  type="submit" class="button alert" value="Logout">
+<nav  class="navbar navbar-inverse" role="navigation">
+  <div class="navbar-header">
+    <img src="/assets/logo3.png" style="max-height: 80%; max-width: 80%;"  >
+  </div>
+  <%= form_tag("/users/sign_out",:method => :delete,:class=>"navbar-form navbar-right") do%>
+                        <input  type="submit" class="btn btn-danger navbar-right" value="Logout">
         <%end%>
-        </li>
-        <li class="divider"></li>
-      <li class><a href="#">About us</a></li>
-    </ul>
-  </section>
 </nav>
 
+ <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="well well-lg">    
+                          <%= form_for @filerack,:url => "/user/createfile", :html => { :multipart => true } do |form| %>
+                                <%= form.file_field :datafile%>
+                                <input  type="submit" class="btn btn-success" value="Upload">
+                          <% end %> 
+                      </div>
+              </div>
+          </div>
 
 <div class="row">
-       <div class="large-3 columns">
-            <%= form_for @filerack,:url => "/user/createfile", :html => { :multipart => true } do |form| %>
-                <%= form.file_field :datafile%>
-                <%= submit_tag("Upload!!!")%>
-            <% end %>
-        </div>
-  <div class="large-9  large-offset-1 clolumns">   
- <%if @allfiles.nil?%>
-       <div class="panel callout radius">
-             <h5>No files to display!.</h5>
-              <p>Please upload some files or no one in the group uploaded any files, So nothing to display here!.</p>
-            </div>
- <%else%>
-      
-   <%@allfiles.each do |file|%>
-                  
-                  <div class="row" >
-                       <span class="label">
-                         <%= file.datafile%>
-                         </span>
-                  </div>
-            <%end%>
-         
-<%end%>
- </div>
-  
+  <div class="col-md-10 col-md-offset-1">
+<div class="panel panel-success">
+  <div class="panel-heading"  ><button  id="public_files_open" type="button" class="btn btn-success">Public Files  <span class="glyphicon glyphicon-chevron-down "></span></button></div>
+  <%if @allfiles.count ==0 %>
+  <div class="panel panel-danger"><h4>No Files To display</h4></div>
+  <%else%>
+  <table class="table table-hover">
+    <thead><th>Name</th><th>Date</th><th>Email of User</th><th>Download?</th><th>Delete?</th></thead>
+    <tbody>
+        <% @allfiles.each do |file|%>
+      <tr>
+              <td><%= file.datafile_file_name%></td>
+              <td><%=file.datafile_updated_at%></td>
+              <td><%=current_user.email%></td>
+             <td><a class="btn btn-primary btn-sm" href="file.datafile.url"> Download <span class="glyphicon glyphicon-cloud-download"></span></a></td>
+        <td><div class="file_delete" id="<%=file.id%>"><button type="button" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span></button></div></td>
+        <tr>
+        <%end%>
+   </tbody>
+    </table>
+  <%end%>
+</div>
+
+  </div>
+</div>
+    
+    
+    
+    
+
+

@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
+//= require bootstrap
 //= require turbolinks
+//= require ownscript
 //= require_tree .
 
-$(document).foundation();

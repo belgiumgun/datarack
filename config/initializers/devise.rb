@@ -126,8 +126,8 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length. Default is 8..128.
-  config.password_length = 8..128
-
+  config.password_length = 2..128
+  config.secret_key = '8f440ab7173ca0828a081172727d494286bbab9bfcb6ee4be47e4bca98a4b8633ec87098b580cb763652af987030333532429a667e735a37fe805f658d29bfe0'  
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.

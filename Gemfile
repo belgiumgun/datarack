@@ -14,7 +14,7 @@ gem 'devise'
 gem "paperclip", "~> 3.0"
 
 #foundation files
-gem 'zurb-foundation', '~> 4.0.0'
+#gem 'zurb-foundation', '~> 4.0.0'
 
 #pg gem for heroku
 #gem 'pg'
