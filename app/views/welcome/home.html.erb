@@ -33,7 +33,7 @@
               <td><%= file.datafile_file_name%></td>
               <td><%=file.datafile_updated_at%></td>
               <td><%=current_user.email%></td>
-             <td><a class="btn btn-primary btn-sm" href="file.datafile.url"> Download <span class="glyphicon glyphicon-cloud-download"></span></a></td>
+             <td><a class="btn btn-primary btn-sm" href="<%=file.datafile.url%>"> Download <span class="glyphicon glyphicon-cloud-download"></span></a></td>
         <td><div class="file_delete" id="<%=file.id%>"><button type="button" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span></button></div></td>
         <tr>
         <%end%>
