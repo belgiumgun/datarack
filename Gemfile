@@ -8,6 +8,8 @@ gem 'rails', '4.0.0'
 # tEst comment for  Braching git
 gem 'newrelic_rpm'
 
+
+gem 'rails_12factor', group: :production
 #For authentication
 gem 'devise'
 
