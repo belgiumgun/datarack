@@ -10,21 +10,23 @@
  <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                   <div class="well well-lg">    
-                          <%= form_for @filerack,:url => "/user/createfile", :html => { :multipart => true } do |form| %>
-                                <%= form.file_field :datafile%>
+                    <%= form_for @filerack,:url => "/user/createfile", :html => { :multipart => true } do |form| %>
+                    <%= form.file_field :datafile,:multiple=>true%>
                                 <input  type="submit" class="btn btn-success" value="Upload">
                           <% end %> 
                       </div>
               </div>
           </div>
-
-<div class="row">
+<!-- work around needs to be done for this -->
+<div class="row" style="display:none">
     <div class="col-md-8 col-md-offset-2">
                   <div class="well well-lg"> 
                     <div class="row">
-                      <div class="col-md-4">  <input id="file_uploader" type="file" name="user_files[]"class="btn btn-primary" multiple></div>
-                      <div class="col-md-2  col-md-offset-2"> <button class="btn btn-success">Start upload<span class="glyphicon glyphicon-upload"></span></button></div>
+                    <%= form_tag  :remote=>true do  %> 
+                      <div class="col-md-4">  <input id="file_uploader" type="file" name="datafile[]"class="btn btn-primary" multiple></div>
+                      <div class="col-md-2  col-md-offset-2"> <button class="btn btn-success" type="submit">Start upload<span class="glyphicon glyphicon-upload"></span></button></div>
                       <div class="col-md-2"> <button class="btn btn-danger">Cancel Upload<span class="glyphicon glyphicon-remove"></span></button></div>
+                    <%end%>
                     </div>
                     <br/>
                     <div class="row" id="file_list">
