@@ -56,10 +56,12 @@
     <tbody>
         <% @allfiles.each do |file|%>
       <tr>
+      
               <td><%= file.datafile_file_name%></td>
               <td><%=file.datafile_updated_at%></td>
               <td><%=current_user.email%></td>
-             <td><a class="btn btn-primary btn-sm" href="<%=file.datafile.url%>"> Download <span class="glyphicon glyphicon-cloud-download"></span></a></td>
+        <td><a class="btn btn-primary btn-sm" href="<%=file.datafile.url%>" download="<%= file.datafile_file_name%>"> Download <span class="glyphicon glyphicon-cloud-download"></span></a></td>
+        <!--<td><div class="file_download" data-file_url="<%=file.datafile.path%>" data-file_type="<%= file.datafile_content_type%>"><button type="button" class="btn btn-primary btn-sm"> Download <span class="glyphicon glyphicon-cloud-download"></span></a></div></td>-->
         <td><div class="file_delete" id="<%=file.id%>"><button type="button" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span></button></div></td>
         <tr>
         <%end%>

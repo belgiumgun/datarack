@@ -6,9 +6,14 @@ $(document).ready(function(){
   
   });
   
+  $('.file_download').click(function(){
+  //alert($(this).data("file_url"));
+   // $.post("/file/download",{file_url: $(this).data("file_url"), file_type: $(this).data("file_type")});
+  });
+  
   $('.file_delete').click(function(){
      $(this).closest("tr").remove();
-    $.post("/file/delete",{id: $(this).attr("id")})
+    $.post("/file/delete",{id: $(this).attr("id")});
   });
   
 
