@@ -21,7 +21,7 @@ class WelcomeController < ApplicationController
       end
     end
       
-   @allfiles = Filerack.where(:user_id =>current_user.id)
+   @allfiles = Filerack.all
    p @allfiles.count
    redirect_to :back  
  end
@@ -30,8 +30,6 @@ class WelcomeController < ApplicationController
   def deletefile
     @filerack= Filerack.new
     Filerack.where(:id=>params["id"].to_i).first.delete
-    
-    
     render nothing: true      
   end
     
