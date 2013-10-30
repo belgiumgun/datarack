@@ -1,0 +1,90 @@
+
+       <div class="row">
+                 <div class="col-md-8 col-md-offset-4">
+                    <h4>Candidate Details Upload form </h4>
+                      </div>
+                    </div>
+                     <%= form_for @resume,:url => "/user/createfile", :html => { :multipart => true } do |form| %>
+                      <div class="form-group">
+                    <%= form.label :name,:class=>"control-label"%>    
+                    <%= form.text_field :candidate_name, :class=>"form-control",:type=>"text"%>
+                     <%= label "label","Email",:class=>"control-label"%>    
+                    <%= form.email_field :email, :class=>"form-control",:type=>"email"%>
+                    <%= label "label","Phone Number",:class=>"control-label"%>    
+                    <%= form.telephone_field :phone, :class=>"form-control",:type=>"text"%>
+                    <%= form.label :skills,:class=>"control-label"%>    
+                    <%= form.text_field :skills, :class=>"form-control",:type=>"text"%>
+                    </div>
+                       <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <%= form.label :location,:class=>"control-label"%>    
+                            <%= form.text_field :location, :class=>"form-control",:type=>"text"%>
+                            </div>
+                          <div class="col-md-6">
+                            <%= form.label :relocation,:class=>"control-label"%>    
+                            <%= form.text_field :relocation, :class=>"form-control",:type=>"text"%>
+                          </div>
+                         </div>
+                       </div>  
+                    <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-6">
+                             <%= form.label :overall_experience ,:class=>"control-label"%>    
+                             <%= form.text_field :overall_experience, :class=>"form-control",:type=>"text"%>
+                          </div>
+                          <div class="col-md-6">
+                            <%= form.label :relevant_experience,:class=>"control-label"%>    
+                            <%= form.text_field :relevant_experience, :class=>"form-control",:type=>"text"%>
+                            </div>
+                         </div>
+                       </div>  
+   <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-6">
+                 
+                            <%= form.label :current_ctc,:class=>"control-label"%>    
+                    <%= form.text_field :current_ctc, :class=>"form-control",:type=>"text"%>
+                          </div>
+                          <div class="col-md-6">
+                    <%= form.label :expected_ctc,:class=>"control-label"%>    
+                    <%= form.text_field :expected_ctc, :class=>"form-control",:type=>"text"%>
+                          </div>
+                         </div>
+                       </div>  
+   <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-6">
+               
+                            <%= form.label "Notice period (2years 1month)",:class=>"control-label"%>    
+                    <%= form.text_field :notice_period, :class=>"form-control",:type=>"text"%>
+                          </div>
+                          <div class="col-md-6">
+                    <%= form.label :availablity,:class=>"control-label"%>    
+                    <%= form.text_field :availablity, :class=>"form-control",:type=>"text"%>
+                          </div>
+                         </div>
+                       </div>  
+   <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-6">
+               
+                            <%= form.label :remarks,:class=>"control-label"%>    
+                    <%= form.text_field :remarks, :class=>"form-control",:type=>"text"%>
+                          </div>
+                          <div class="col-md-6">
+                    <%= form.label :source,:class=>"control-label"%>    
+                    <%= form.text_field :source, :class=>"form-control",:type=>"text"%>
+                               </div>
+                         </div>
+                       </div>  
+                    <div class="form-group">
+                    <%= fields_for @filerack do|r|%>
+                    <%= r.file_field :datafile,:multiple=>true%>
+                    <%end%>      
+                    </div>
+                    <div class="form-group">
+                           <input  type="submit" class="btn btn-success btn-lg btn-block" value="submit profile">
+                        </div>
+                          <% end %> 
+                      </div>

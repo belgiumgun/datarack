@@ -6,73 +6,55 @@
                         <input  type="submit" class="btn btn-danger navbar-right" value="Logout">
         <%end%>
 </nav>
-
+<!-- Page body Start-->
  <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                  <div class="well well-lg">    
-                    <%= form_for @filerack,:url => "/user/createfile", :html => { :multipart => true } do |form| %>
-                    <%= form.file_field :datafile,:multiple=>true%>
-                                <input  type="submit" class="btn btn-success" value="Upload">
-                          <% end %> 
-                      </div>
-              </div>
-          </div>
-<!-- work around needs to be done for this -->
-<div class="row" style="display:none">
-    <div class="col-md-8 col-md-offset-2">
-                  <div class="well well-lg"> 
-                    <div class="row">
-                    <%= form_tag  :remote=>true do  %> 
-                      <div class="col-md-4">  <input id="file_uploader" type="file" name="datafile[]"class="btn btn-primary" multiple></div>
-                      <div class="col-md-2  col-md-offset-2"> <button class="btn btn-success" type="submit">Start upload<span class="glyphicon glyphicon-upload"></span></button></div>
-                      <div class="col-md-2"> <button class="btn btn-danger">Cancel Upload<span class="glyphicon glyphicon-remove"></span></button></div>
-                    <%end%>
-                    </div>
-                    <br/>
-                    <div class="row" id="file_list">
-                      <div class="col-md-2 col"></div>
-                      <div class="col-md-6 col ">
-                      <div class="pannel pannel-success">
-                        <table class="table table-hover">
-                          <tbody id="body_table">
-                          </table>
-                        </div></div></div>
-                    
-      </div><!-- well div for file upload-->
-      </div><!-- class div for file upload-->
-</div><!-- row div for file upload-->
-
-
-
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-<div class="panel panel-success">
-  <div class="panel-heading"  ><button  id="public_files_open" type="button" class="btn btn-success">Public Files  <span class="glyphicon glyphicon-chevron-down "></span></button></div>
-  <%if @allfiles.count ==0 %>
-  <div class="panel panel-danger"><h4>No Files To display</h4></div>
-  <%else%>
-  <table class="table table-hover">
-    <thead><th>Name</th><th>Date</th><th>Email of User</th><th>Download?</th><th>Delete?</th></thead>
-    <tbody>
-        <% @allfiles.each do |file|%>
-      <tr>
-      
-              <td><%= file.datafile_file_name%></td>
-              <td><%=file.datafile_updated_at%></td>
-              <td><%=current_user.email%></td>
-        <td><a class="btn btn-primary btn-sm" href="<%=file.datafile.url%>" download="<%= file.datafile_file_name%>"> Download <span class="glyphicon glyphicon-cloud-download"></span></a></td>
-        <!--<td><div class="file_download" data-file_url="<%=file.datafile.path%>" data-file_type="<%= file.datafile_content_type%>"><button type="button" class="btn btn-primary btn-sm"> Download <span class="glyphicon glyphicon-cloud-download"></span></a></div></td>-->
-        <td><div class="file_delete" id="<%=file.id%>"><button type="button" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span></button></div></td>
-        <tr>
-        <%end%>
-   </tbody>
-    </table>
-  <%end%>
-</div>
-
+    <!-- Side bar Start-->
+   <div class="col-md-2 ">
+      <ul class="nav nav-pills nav-stacked" id="list_sidebar">
+        <li id="db_sidebar" class="active"><a  href="/home">Candidates Database</a></li>
+        <li id="form_sidebar"><a  href="/candidate_form">Upload form</a></li>
+      </ul>
   </div>
+  <!-- Side bar End-->              
+   <!-- Well- starting!-->
+   <div class="col-md-10">
+     <div class="well well-lg" id="data_well"> 
+       <div class="row">
+         <div class="panel panel-info">
+           <div class="panel-heading">
+              <%=form_tag("/candidate/search",:remote=> true,:class=>"form-inline") do%>
+              <%= search_field_tag :candidate_search,"",:class=>"form-group"%>
+             <%= submit_tag :search,:class=>"btn btn-default btn-sm",:id=>"search_submit"%>
+              <%end%>
+           </div>
+           <div id="results_pannel"></div>
+           </div>
+         </div>
+       
+       
+        <div class="row">
+          <div class="panel panel-success">
+               <table class="table table-hover">
+                   <div class="panel-heading">All Candidate Details </div>
+                   <thead><tr>
+                       <th>Name</th><th>Skills</th><th>Location</th><th>Expected CTC</th><th>Current CTC</th><th>Phone</th><th>Email</th><th>Notice Period</th><th>Resume Download</th><th>Delete</th>
+                    </tr></thead>
+          
+                   <tbody>
+                       <%@allresumes.each do |resume|%>
+                         <tr>
+                         <td><%= resume.candidate_name%></td><td><%= resume.skills%></td><td><%= resume.skills%></td><td><%= resume.skills%></td> <td><%= resume.expected_ctc%></td> <td><%= resume.phone%></td> <td><%= resume.email%></td> <td><%= resume.notice_period%></td> <td><%= resume.file_id%></td><td>DELETE</td>
+                         </tr>
+                       <%end%>
+                   </tbody>
+               </table>
+      </div>
+   </div>
+  </div>
+ </div>
+   <!--Well- End -->
 </div>
-    
+<!-- Page body End-->
     
     
     

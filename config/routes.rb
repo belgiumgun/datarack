@@ -12,8 +12,10 @@ Datarack::Application.routes.draw do
   match '/user/createfile' => 'welcome#insertfile', via: :all  
   match '/file/delete' => 'welcome#deletefile', via: :post  
   
-  
-
+  match "/home" => 'welcome#index', via: :get
+  match "/candidate_form" =>'welcome#candidate_form', via: :get
+  match '/index' => 'welcome#index', via: :all
+  match "/candidate/search" =>"welcome#candidate_search", via: :post
 
   #Routing for DEVISE - USERS
   devise_for :users

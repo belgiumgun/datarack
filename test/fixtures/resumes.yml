@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  candidate_name: MyString
+  location: MyString
+  email: MyString
+  phone: MyString
+  overall_experience: MyString
+  relevant_experience: MyString
+  current_ctc: MyString
+  expected_ctc: MyString
+  notice_period: MyString
+  relocation: MyString
+  availablity: MyString
+  remarks: MyString
+  submitted_by: MyString
+  source: MyString
+
+two:
+  candidate_name: MyString
+  location: MyString
+  email: MyString
+  phone: MyString
+  overall_experience: MyString
+  relevant_experience: MyString
+  current_ctc: MyString
+  expected_ctc: MyString
+  notice_period: MyString
+  relocation: MyString
+  availablity: MyString
+  remarks: MyString
+  submitted_by: MyString
+  source: MyString

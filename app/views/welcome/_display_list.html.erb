@@ -1,0 +1,20 @@
+ <div class="row">
+   
+     <div class="panel panel-success">
+       <table class="table table-hover">
+         <thead>
+           <tr>
+             <th>Name</th><th>Skills</th><th>Location</th><th>Expected CTC</th><th>Current CTC</th><th>Phone</th><th>Email</th><th>Notice Period</th><th>Resume Download</th><th>Delete</th>
+           </tr>
+         </thead>
+         <tbody>
+           <%@allresumes.each do |resume|%>
+           <tr>
+             <td><%= resume.candidate_name%></td> <td><%= resume.skills%></td> <td><%= resume.expected_ctc%></td> <td><%= resume.phone%></td> <td><%= resume.email%></td> <td><%= resume.notice_period%></td> <td><%= resume.file_id%></td><td>DELETE</td>
+           </tr>
+           <%end%>
+         </tbody>
+       </table>
+      </div>
+   
+</div>

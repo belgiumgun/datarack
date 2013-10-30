@@ -4,10 +4,13 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+gem 'sqlite3'
 # tEst comment for  Braching git
 gem 'newrelic_rpm'
 
+#Gem for searching
+gem 'sunspot_rails'
+ gem 'sunspot_solr'
 
 gem 'rails_12factor', group: :production
 #For authentication

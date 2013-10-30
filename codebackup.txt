@@ -1,0 +1,69 @@
+
+<!-- work around needs to be done for this -->
+<div class="row" style="display:none">
+    <div class="col-md-8 col-md-offset-2">
+                  <div class="well well-lg"> 
+                    <div class="row">
+                    <%= form_tag  :remote=>true do  %> 
+                      <div class="col-md-4">  <input id="file_uploader" type="file" name="datafile[]"class="btn btn-primary" multiple></div>
+                      <div class="col-md-2  col-md-offset-2"> <button class="btn btn-success" type="submit">Start upload<span class="glyphicon glyphicon-upload"></span></button></div>
+                      <div class="col-md-2"> <button class="btn btn-danger">Cancel Upload<span class="glyphicon glyphicon-remove"></span></button></div>
+                    <%end%>
+                    </div>
+                    <br/>
+                    <div class="row" id="file_list">
+                      <div class="col-md-2 col"></div>
+                      <div class="col-md-6 col ">
+                      <div class="pannel pannel-success">
+                        <table class="table table-hover">
+                          <tbody id="body_table">
+                          </table>
+                        </div></div></div>
+                    
+      </div><!-- well div for file upload-->
+      </div><!-- class div for file upload-->
+</div><!-- row div for file upload-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row" style="display:none">
+  <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-success">
+          <div class="panel-heading"  ><button  id="public_files_open" type="button" class="btn btn-success">Public Files  <span class="glyphicon glyphicon-chevron-down "></span></button></div>
+            <%if @allfiles.count ==0 %>
+            <div class="panel panel-danger"><h4>No Files To display</h4></div>
+            <%else%>
+              <table class="table table-hover">
+                 <thead><th>Name</th><th>Date</th><th>Email of User</th><th>Download?</th><th>Delete?</th></thead>
+                  <tbody>
+                    <% @allfiles.each do |file|%>
+                      <tr>
+                        <td><%= file.datafile_file_name%></td>
+                        <td><%=file.datafile_updated_at%></td>
+                         <td><%=current_user.email%></td>
+                         <td><a class="btn btn-primary btn-sm" href="<%=file.datafile.url%>" download="<%= file.datafile_file_name%>"> Download <span class="glyphicon glyphicon-cloud-download"></span></a></td>
+                          <!--<td><div class="file_download" data-file_url="<%=file.datafile.path%>" data-file_type="<%= file.datafile_content_type%>"><button type="button" class="btn btn-primary btn-sm"> Download <span class="glyphicon glyphicon-cloud-download"></span></a></div></td>-->
+                          <td><div class="file_delete" id="<%=file.id%>"><button type="button" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span></button></div></td>
+                        <tr>
+                    <%end%>
+                  </tbody>
+                </table>
+            <%end%>
+          </div>
+   
+       </div>
+</div>
+    
