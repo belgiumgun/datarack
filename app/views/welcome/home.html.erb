@@ -1,23 +1,30 @@
 <nav  class="navbar navbar-inverse" role="navigation">
-  <div class="navbar-header">
-    <img src="/assets/logo3.png" style="max-height: 80%; max-width: 80%;"  >
+ <div class="navbar-header">
+    <img src="/assets/logo9.png" style="max-height: 80%; max-width: 80%;"  >
   </div>
   <%= form_tag("/users/sign_out",:method => :delete,:class=>"navbar-form navbar-right") do%>
                         <input  type="submit" class="btn btn-danger navbar-right" value="Logout">
         <%end%>
 </nav>
 <!-- Page body Start-->
+
+
+
+
+
  <div class="row">
     <!-- Side bar Start-->
-   <div class="col-md-2 ">
-      <ul class="nav nav-pills nav-stacked" id="list_sidebar">
-        <li id="db_sidebar" class="active"><a  href="/home">Candidates Database</a></li>
+   <div class="col-md-12">
+      <ul class="nav nav-tabs " id="list_sidebar">
+        <li id="db_sidebar" class="active"><a  href="/home">Candidates DB</a></li>
         <li id="form_sidebar"><a  href="/candidate_form">Upload form</a></li>
       </ul>
   </div>
+</div>
+<div class="row">
   <!-- Side bar End-->              
    <!-- Well- starting!-->
-   <div class="col-md-10">
+   <div class="col-md-12">
      <div class="well well-lg" id="data_well"> 
        <div class="row">
          <div class="panel panel-info">
@@ -31,27 +38,72 @@
            </div>
          </div>
        
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Candidate Details</h4>
+      </div>
+      <div class="modal-body" id="modal_body">
+        
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+    
+
+
+
        
         <div class="row">
           <div class="panel panel-success">
+            <div class="row">
+       <% flash.each do |name, msg| %>
+            
+                               <div class="alert alert-info alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <%=msg%>
+                                 <%=name%>
+                                 </div>
+                    <% end %> 
+              <%=flash[:update_notices]%>
+            
+            </div>
+            
                <table class="table table-hover">
                    <div class="panel-heading">All Candidate Details </div>
                    <thead><tr>
-                       <th>Name</th><th>Skills</th><th>Location</th><th>Expected CTC</th><th>Current CTC</th><th>Phone</th><th>Email</th><th>Notice Period</th><th>Resume Download</th><th>Delete</th>
+                     <th>Name</th><th>Skills</th><th>Location</th><th>Visa Status</th><th>Current Status</th><th>Phone</th><th>Email</th><th>Overall Exp</th><th>Relavent exp</th><th>Current CTC</th><th>Expected CTC</th><th></th><th></th>
                     </tr></thead>
           
                    <tbody>
                        <%@allresumes.each do |resume|%>
                          <tr>
-                         <td><%= resume.candidate_name%></td><td><%= resume.skills%></td><td><%= resume.skills%></td><td><%= resume.skills%></td> <td><%= resume.expected_ctc%></td> <td><%= resume.phone%></td> <td><%= resume.email%></td> <td><%= resume.notice_period%></td> <td><%= resume.file_id%></td><td>DELETE</td>
+                           <td><%= resume.candidate_name%></td><td><%= resume.skills%></td><td><%= resume.location%></td><td><%= resume.visa_status%></td> <td><%= resume.current_status%></td> <td><%= resume.phone%></td> <td><%= resume.email%></td> <td><%= resume.overall_experience%></td> <td><%= resume.relevant_experience%></td><td><%= resume.current_ctc%></td><td><%= resume.expected_ctc%></td>
+                           <td><div class="record_edit" data-record='<%= resume.id%>'><a class="btn btn-warning btn-sm" ><span class="glyphicon glyphicon-edit"></span></a></div></td>
+                           <td><a class="btn btn-success btn-sm" download="true" href='<%= resume.filerack.datafile.url%>'><span class="glyphicon glyphicon-arrow-down"></span></a></td>
+                           <td><div class="record_delete" data-number='<%= resume.id%>'><button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button></div></td>
+                           <td><div class="details_view" data-record='<%= resume.id%>'  data-toggle="modal"><button class="btn btn-info btn-sm"><span class="glyphicon glyphicon-info-sign"></span></button></div></td>
                          </tr>
                        <%end%>
                    </tbody>
                </table>
+             
       </div>
+          <div class='row'> <div class="col-md-8 col-md-offset-4"> <%= paginate @allresumes %></div></div>
+          
    </div>
   </div>
  </div>
+  
    <!--Well- End -->
 </div>
 <!-- Page body End-->

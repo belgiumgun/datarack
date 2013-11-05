@@ -10,12 +10,19 @@ Datarack::Application.routes.draw do
   
 
   match '/user/createfile' => 'welcome#insertfile', via: :all  
-  match '/file/delete' => 'welcome#deletefile', via: :post  
+  match '/record/delete' => 'welcome#delete_record', via: :post  
   
   match "/home" => 'welcome#index', via: :get
   match "/candidate_form" =>'welcome#candidate_form', via: :get
   match '/index' => 'welcome#index', via: :all
   match "/candidate/search" =>"welcome#candidate_search", via: :post
+
+  match "/file/download" =>"welcome#download_file",via: :post
+  match "/candidate/details_show"  => "welcome#show_details", via: :all
+  
+  match 'record/edit' => "welcome#edit_candidate_details", via: :all
+  
+  match 'candidate/details_update' => 'welcome#update_candidate_details', via: :patch
 
   #Routing for DEVISE - USERS
   devise_for :users

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131028131505) do
+ActiveRecord::Schema.define(version: 20131101121430) do
 
   create_table "fileracks", force: true do |t|
     t.datetime "created_at"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20131028131505) do
     t.string   "datafile_content_type"
     t.integer  "datafile_file_size"
     t.datetime "datafile_updated_at"
+    t.integer  "resume_id"
   end
 
   create_table "resumes", force: true do |t|
@@ -44,6 +45,14 @@ ActiveRecord::Schema.define(version: 20131028131505) do
     t.string   "file_id"
     t.string   "field1"
     t.string   "skills"
+    t.string   "visa_status"
+    t.string   "visa_emp"
+    t.string   "martial_status"
+    t.string   "current_status"
+    t.integer  "filerack_id"
+    t.string   "field2"
+    t.string   "field3"
+    t.string   "field4"
   end
 
   create_table "users", force: true do |t|

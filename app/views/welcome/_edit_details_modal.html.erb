@@ -1,45 +1,9 @@
-<nav  class="navbar navbar-inverse" role="navigation">
-  <div class="navbar-header">
-    <img src="/assets/logo3.png" style="max-height: 80%; max-width: 80%;"  >
-  </div>
-  <%= form_tag("/users/sign_out",:method => :delete,:class=>"navbar-form navbar-right") do%>
-                        <input  type="submit" class="btn btn-danger navbar-right" value="Logout">
-        <%end%>
-</nav>
-
-
-<!-- Page body Start-->
- <div class="row">
-    <!-- Side bar Start-->
-   <div class="col-md-12">
-      <ul class="nav nav-tabs " id="list_sidebar">
-        <li id="db_sidebar" ><a  href="/home">Candidates DB</a></li>
-        <li id="form_sidebar" class="active"><a  href="/candidate_form">Upload form</a></li>
-      </ul>
-  </div>
-</div>
-<div class="row">
-  <!-- Side bar End-->              
-   <!-- Well- starting!-->
-
-   <div class="col-md-8 col-md-offset-2">
-     <div class="well well-lg" id="data_well">  
-       <div class="row">
-       <% flash.each do |name, msg| %>
-                               <div class="alert alert-info alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <%=msg%>
-                                 </div>
-                    <% end %> 
-     </div>
-        <div class="row">
-                 <div class="col-md-8 col-md-offset-4">
-         
-                    <h4>Candidate Details Upload form </h4>
-                      </div>
-                    </div>
-                     <%= form_for @resume,:url => "/user/createfile", :html => { :multipart => true } do |form| %>
-                      <div class="form-group">
+<div class="well well-lg" id="edit_content">
+    
+   
+  <%=form_for @resume,:url=>"/candidate/details_update", :html => { :multipart => true } do |form|%>
+                        <div class="form-group">
+                          <%=form.hidden_field(:id)%>
                         <%= form.label :name,:class=>"control-label"%>    
                         <%= form.text_field :candidate_name, :class=>"form-control",:type=>"text", :placeholder=>"Enter name with spaces; ex:Van Helsing / Sri rama krishna murthi "%>
                      <%= label "label","Email",:class=>"control-label"%>    
@@ -50,7 +14,7 @@
                         <%= form.text_field :skills, :class=>"form-control",:type=>"text",:placeholder=>"Enter skills seperated by space; Ex: Java / Java Oracle SQL MYSQL"%>
                     </div>
        
-               <div class="form-group">
+                   <div class="form-group">
                         <div class="row">
                           <div class="col-md-6">
                             <%= form.label :martial_status,:class=>"control-label"%>    
@@ -126,11 +90,10 @@
                           </div>
                          </div>
                        </div>  
-   <div class="form-group">
+               <div class="form-group">
                         <div class="row">
                           <div class="col-md-6">
-               
-                            <%= form.label :remarks,:class=>"control-label"%>    
+                     <%= form.label :remarks,:class=>"control-label"%>    
                             <%= form.text_field :remarks, :class=>"form-control",:type=>"text",:placeholder=>"Good at technical/bad communicaton skills"%>
                           </div>
                           <div class="col-md-6">
@@ -142,23 +105,12 @@
                     <div class="form-group">
                      <%= form.label "Resume Upload(Please make sure that you uploading proper file)**",:class=>"control-label"%>    
                     <%= fields_for @filerack do|r|%>
-                      <%= r.file_field :datafile,:required=>true%>
+                    <%= r.file_field :datafile%>
                     <%end%>      
                     </div>
                     <div class="form-group">
                            <input  type="submit" class="btn btn-success btn-lg btn-block" value="submit profile">
-                        </div>
-                          <% end %> 
-                      </div>
-       
-          </div>
-   <!--Well- End -->
-</div>
-
-
-
-
-
-<!-- Page body End-->
-    
-    
+                        </div>             
+              <%end%>
+           </div>
+ 

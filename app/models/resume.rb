@@ -1,5 +1,10 @@
 class Resume < ActiveRecord::Base
   
+  has_one :filerack
+  
+  #paginates_per 2
+  
+  
   searchable  do
     text :skills
     text :location 

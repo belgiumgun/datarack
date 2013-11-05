@@ -9,8 +9,8 @@ Datarack::Application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
   
-  
-  
+  #for file download
+  #config.action_dispatch.x_sendfile_header = "X-Sendfile"
   
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
